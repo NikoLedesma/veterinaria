@@ -13,7 +13,7 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackages={"veterinary.com.*"})
+@ComponentScan(basePackages={"veterinary.com.controller"})
 public class MvcConfig extends WebMvcConfigurerAdapter{
 
 	
@@ -45,6 +45,13 @@ public class MvcConfig extends WebMvcConfigurerAdapter{
 		viewResolver.setSuffix(".jsp");
 		return viewResolver;
 	}	
+	
+	
+	
+	public void addViewControllers( ViewControllerRegistry registry){
+		registry.addRedirectViewController("/", "login");
+	}
+	
 	
 	
 }

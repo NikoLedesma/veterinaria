@@ -1,13 +1,14 @@
-package veterinary.com.service;
+package veterinary.com.serviceImpl;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import veterinary.com.model.Person;
+import veterinary.com.entity.Person;
+import veterinary.com.service.ServicePerson;
 
 @Service
-public class SevicePersonImp implements ServicePerson {
+public class SevicePersonImpl implements ServicePerson {
 	public Person createPerson() {
 		return new Person(1, "Pepe", "Ledesma", 18, "Av.Gral Las Heras",
 				"pepe@gmail.com");

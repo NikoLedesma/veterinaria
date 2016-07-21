@@ -1,4 +1,4 @@
-package veterinary.com.configSecurityWeb;
+package veterinary.com.configContext;
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 

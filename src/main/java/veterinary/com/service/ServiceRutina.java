@@ -1,7 +1,7 @@
 package veterinary.com.service;
 
-import veterinary.com.model.Person;
-import veterinary.com.model.Rutina;
+import veterinary.com.entity.Person;
+import veterinary.com.entity.Rutina;
 
 public interface ServiceRutina {
 

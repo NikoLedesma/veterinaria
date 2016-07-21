@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import veterinary.com.model.Person;
+import veterinary.com.entity.Person;
 import veterinary.com.service.ServiceMock;
 import veterinary.com.service.ServicePerson;
 

@@ -2,7 +2,7 @@ package veterinary.com.service;
 
 import java.util.List;
 
-import veterinary.com.model.Person;
+import veterinary.com.entity.Person;
 
 public interface ServicePerson {
 
