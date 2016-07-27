@@ -1,11 +1,16 @@
 package veterinary.com.configContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -13,11 +18,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	// @Autowired
 	// private DataSource dataSource;
 
+	
+	@Autowired
+	@Qualifier("userDetailsService")
+	UserDetailsService userDetailsService;
+	
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth)
 			throws Exception {
-		auth.inMemoryAuthentication().withUser("user").password("password")
-				.roles("USER");
+		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
 	}
 
 	protected void configure(HttpSecurity http) throws Exception {
@@ -43,9 +52,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //		 ;
 
 		http.authorizeRequests().antMatchers("/page1","/page2").permitAll()
-				.antMatchers("/welcome", "/hello")
+				.antMatchers("/user", "/hello")
 				.hasRole("USER").and().formLogin()
-				.defaultSuccessUrl("/welcome").loginPage("/login").and()
+				.defaultSuccessUrl("/user").loginPage("/login").and()
 				.logout().logoutSuccessUrl("/login?logout")
 				.deleteCookies("JSESSIONID").invalidateHttpSession(true).and()
 				.csrf();
@@ -55,4 +64,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		 * .deleteCookies("JSESSIONID")
 		 */
 	}
+	
+	@Bean
+	public PasswordEncoder passwordEncoder(){
+		PasswordEncoder encoder =  new BCryptPasswordEncoder();
+		return encoder;
+	}
+	
+	
 }

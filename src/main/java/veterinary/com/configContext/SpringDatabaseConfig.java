@@ -3,6 +3,7 @@ package veterinary.com.configContext;
 import java.util.Properties;
 
 import javax.annotation.Resource;
+import javax.persistence.Column;
 import javax.sql.DataSource;
 import javax.websocket.Session;
 
@@ -70,9 +71,10 @@ public class SpringDatabaseConfig {
 			{
 				setProperty("hibernate.hbm2ddl.auto",env.getProperty("hibernate.hbm2ddl.auto"));
 				setProperty("hibernate.dialect",env.getProperty("hibernate.dialect"));
-				setProperty("hibernate.globally_quoted_identifiers", "true");
-			}
-		};
+				//setProperty("hibernate.globally_quoted_identifiers", "true");//supestamente te agrega directamente '' a lo q esta entre comillas...por ej:
+				//@Column(name="id_person")--->se entiende al nombre de la columna como 'id_person',ej @Column(name="from")--->'from' y no la toma como una palabra reservada
+			}	
+		};	
 	}
 
 }

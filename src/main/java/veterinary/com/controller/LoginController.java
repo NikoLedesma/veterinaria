@@ -1,5 +1,11 @@
 package veterinary.com.controller;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,9 +20,17 @@ public class LoginController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/welcome")
+	@RequestMapping(value = "/user")
 	public ModelAndView welcome() {
-		ModelAndView mv = new ModelAndView("welcome");
+		ModelAndView mv = new ModelAndView("user");
+		List<SimpleGrantedAuthority> roles=new ArrayList<SimpleGrantedAuthority>();
+		
+		Collection<SimpleGrantedAuthority> authorities = (Collection<SimpleGrantedAuthority>)    SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+		for (SimpleGrantedAuthority simpleGrantedAuthority : authorities) {
+			System.out.println(simpleGrantedAuthority.getAuthority());
+			roles.add(simpleGrantedAuthority);
+		}
+		mv.addObject("roles", roles);
 		return mv;
 	}
 

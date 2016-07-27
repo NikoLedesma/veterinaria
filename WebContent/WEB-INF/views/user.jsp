@@ -9,6 +9,12 @@
 
 logoutURL:"${logoutUrl}"
 
+	<c:forEach var="role" items="${roles}">
+		<li>${role}</li>
+	</c:forEach>
+
+
+
 <hr />
 
 

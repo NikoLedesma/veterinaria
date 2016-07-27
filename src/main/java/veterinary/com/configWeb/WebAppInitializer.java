@@ -10,7 +10,7 @@ import org.springframework.web.context.support.AnnotationConfigWebApplicationCon
 import org.springframework.web.servlet.DispatcherServlet;
 
 import veterinary.com.configContext.SecurityConfig;
-import veterinary.com.configContext.SprinfContextConfig;
+import veterinary.com.configContext.SpringContextConfig;
 
 public class WebAppInitializer implements WebApplicationInitializer {
 
@@ -18,7 +18,7 @@ public class WebAppInitializer implements WebApplicationInitializer {
 	public void onStartup(ServletContext container) throws ServletException {
 
 		AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
-		rootContext.register(SprinfContextConfig.class);
+		rootContext.register(SpringContextConfig.class);
 		// ///////////
 		container.addListener(new ContextLoaderListener(rootContext));
 		// ////////////////
