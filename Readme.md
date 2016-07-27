@@ -10,9 +10,9 @@ INSERT INTO users(username,password,enabled)
 VALUES ('niko','$2a$10$04TVADrR6/SPLBjsK0N30.Jf5fNjBugSACeGv1S69dZALR7lSov0y', true);
 /*user:mkyong password:123456;user:alex password:123456*/
 INSERT INTO user_roles (username, role)
-VALUES ('mkyong', 'ROLE_USER');
+VALUES ('pepe', 'ROLE_USER');
 INSERT INTO user_roles (username, role)
-VALUES ('mkyong', 'ROLE_ADMIN');
+VALUES ('pepe', 'ROLE_ADMIN');
 INSERT INTO user_roles (username, role)
-VALUES ('alex', 'ROLE_USER');
+VALUES ('niko', 'ROLE_USER');
 ```
